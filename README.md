@@ -1,2 +1,2 @@
 # Snake
-this is snake game
+this is a simple snake game
