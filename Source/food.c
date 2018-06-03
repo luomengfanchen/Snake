@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 #include "..\Header\snake.h"
 
 
@@ -14,7 +15,7 @@ void createfood()
 
 }
 
-int testfood(int x,int y,Snake *current)
+int testfood(int x,int y,Snake *pSnake)
 {
 
      if(x ==0 || x == 20 || y ==0 || y == 40)
@@ -22,13 +23,13 @@ int testfood(int x,int y,Snake *current)
           return 0;
      }
 
-     while(current!=NULL)
+     while(pSnake!=NULL)
      {
-          if(x == current->x && y == current->y)
+          if((x == pSnake->x) && (y == pSnake->y))
           {
                return 0;
           }
-          current=current->next;
+          pSnake=pSnake->next;
      }
 
      return 1;
