@@ -12,15 +12,15 @@ typedef struct snake
      变量声明
 */
 extern Snake *head;
-extern Snake *current;
-extern Snake *previous;
+
 /*
      函数声明
 */
-void initsnake();//初始化蛇，生成一个蛇头，和两个蛇身
-int testeat();//检测是否吃到食物
-void addsnake();//添加蛇身
-void updatesnake();//更新蛇坐标
-void release();//释放链表
+void initsnake(Snake *pSnake);//初始化蛇，生成一个蛇头，和两个蛇身
+void addsnake(Snake *pSnake);//添加蛇身
+void updatesnake(Snake *pSnake,int key);//更新蛇坐标
+void release(Snake *pSnake);//释放链表
+
+
 
 #endif
