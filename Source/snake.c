@@ -1,38 +1,30 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "..\Header\snake.h"
 #include "..\Header\food.h"
-
 Snake *head=NULL;
-
+Snake *current=NULL;
 //初始化蛇，生成一个蛇头，和两个蛇身
-void initsnake(Snake *pSnake)
+void initsnake()
 {
-     Snake *current=NULL;
-
-     pSnake=(Snake *)malloc(sizeof(Snake));
-     pSnake->x=4;
-     pSnake->y=2;
-
+     head=(Snake *)malloc(sizeof(Snake));
+     head->x=4;
+     head->y=2;
      current=(Snake *)malloc(sizeof(Snake));
      current->x=3;
      current->y=2;
-     pSnake->next=current;
-     pSnake=pSnake->next;
-
-     current=(Snake *)malloc(sizeof(Snake));
-     current->x=3;
+     head->next=current;
+     current->next=(Snake *)malloc(sizeof(Snake));
+     current=current->next;
+     current->x=2;
      current->y=2;
-     pSnake->next=current;
-     pSnake=pSnake->next;
-     pSnake->next=NULL;
+     current->next=NULL;
 }
 
 //更新蛇坐标
-void updatesnake(Snake *pSnake,int key)
+void updatesnake(int key)
 {
-     int prev_x=pSnake->x;//保存上一个节点坐标
-     int prev_y=pSnake->y;
+     int prev_x=head->x;//保存上一个节点坐标
+     int prev_y=head->y;
 
      int cur_x=0;//保存本节点坐标
      int cur_y=0;
@@ -40,63 +32,70 @@ void updatesnake(Snake *pSnake,int key)
      switch(key)//更新蛇头坐标
      {
           case 115://s
-               pSnake->x=pSnake->x+1;
+               head->x=head->x+1;
                break;
           case 119://w
-               pSnake->x=pSnake->x-1;
+               head->x=head->x-1;
                break;
           case 97://a
-               pSnake->y=pSnake->y-1;
+               head->y=head->y-1;
                break;
           case 100://d
-               pSnake->y=pSnake->y+1;
+               head->y=head->y+1;
                break;
           default:
                ;
      }
 
-     pSnake=pSnake->next;
-     while(pSnake != NULL)//更新蛇身坐标
-     {
-          cur_x=pSnake->x;
-          cur_y=pSnake->y;
+     current=head->next;
 
-          pSnake->x=prev_x;
-          pSnake->y=prev_y;
+     while(current != NULL)//更新蛇身坐标
+     {
+          cur_x=current->x;
+          cur_y=current->y;
+
+          current->x=prev_x;
+          current->y=prev_y;
 
           prev_x=cur_x;
           prev_y=cur_y;
 
-          pSnake=pSnake->next;
+          current=current->next;
      }
 
 }
 
+
+
 //添加蛇身
-void addsnake(Snake *pSnake)
+void addsnake()
 {
 
      Snake *AdditionSnake;
      AdditionSnake=(Snake *)malloc(sizeof(Snake));
 
-     while(pSnake->next != NULL)
+     current=head;
+     while(current->next != NULL)
      {
-          pSnake=pSnake->next;
+          current=current->next;
      }
 
-     pSnake->next=AdditionSnake;
+     current->next=AdditionSnake;
      AdditionSnake->next=NULL;
+
+
 }
 
 //释放链表
-void release(Snake *pSnake)
+void release()
 {
      Snake *temp=NULL;
-     while(pSnake != NULL)
+     current=head;
+     while(current != NULL)
      {
-          temp=pSnake->next;
-          free(pSnake);
-          pSnake=temp;
+          temp=current->next;
+          free(current);
+          current=temp;
      }
 
 }

@@ -25,7 +25,7 @@ int testfood(int x,int y,Snake *pSnake)
 
      while(pSnake!=NULL)
      {
-          if((x == pSnake->x) && (y == pSnake->y))
+          if(x == pSnake->x && y == pSnake->y)
           {
                return 0;
           }
