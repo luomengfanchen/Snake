@@ -68,7 +68,7 @@ void updatesnake(int key)
 //检测是否吃到食物
 int testeat()
 {
-     if((head->x != food_x) && (head->y != food_y_))
+     if((head->x != food_x) && (head->y != food_y))
      {
           return 0;
      }
