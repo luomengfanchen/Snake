@@ -1,30 +1,37 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "..\Header\snake.h"
 #include "..\Header\food.h"
-Snake *head=NULL;
-Snake *current=NULL;
+
+Snake head;
+
 //初始化蛇，生成一个蛇头，和两个蛇身
-void initsnake()
+void initsnake(Snake *pSnake)
 {
-     head=(Snake *)malloc(sizeof(Snake));
-     head->x=4;
-     head->y=2;
+     Snake *current=NULL;
+     Snake *temp=NULL;
+
+     pSnake->x=4;
+     pSnake->y=2;
+
      current=(Snake *)malloc(sizeof(Snake));
      current->x=3;
      current->y=2;
-     head->next=current;
-     current->next=(Snake *)malloc(sizeof(Snake));
-     current=current->next;
+     pSnake->next=current;
+     temp=current;
+
+     current=(Snake *)malloc(sizeof(Snake));
      current->x=2;
      current->y=2;
+     temp->next=current;
      current->next=NULL;
 }
 
 //更新蛇坐标
-void updatesnake(int key)
+void updatesnake(Snake *pSnake,int key)
 {
-     int prev_x=head->x;//保存上一个节点坐标
-     int prev_y=head->y;
+     int prev_x=pSnake->x;//保存上一个节点坐标
+     int prev_y=pSnake->y;
 
      int cur_x=0;//保存本节点坐标
      int cur_y=0;
@@ -32,78 +39,65 @@ void updatesnake(int key)
      switch(key)//更新蛇头坐标
      {
           case 115://s
-               head->x=head->x+1;
+               pSnake->x=pSnake->x+1;
                break;
           case 119://w
-               head->x=head->x-1;
+               pSnake->x=pSnake->x-1;
                break;
           case 97://a
-               head->y=head->y-1;
+               pSnake->y=pSnake->y-1;
                break;
           case 100://d
-               head->y=head->y+1;
+               pSnake->y=pSnake->y+1;
                break;
           default:
                ;
      }
 
-     current=head->next;
-
-     while(current != NULL)//更新蛇身坐标
+     pSnake=pSnake->next;
+     while(pSnake != NULL)//更新蛇身坐标
      {
-          cur_x=current->x;
-          cur_y=current->y;
+          cur_x=pSnake->x;
+          cur_y=pSnake->y;
 
-          current->x=prev_x;
-          current->y=prev_y;
+          pSnake->x=prev_x;
+          pSnake->y=prev_y;
 
           prev_x=cur_x;
           prev_y=cur_y;
 
-          current=current->next;
+          pSnake=pSnake->next;
      }
 
-}
-
-//检测是否吃到食物
-int testeat()
-{
-     if((head->x != food_x) && (head->y != food_y))
-     {
-          return 0;
-     }
-     return 1;
 }
 
 //添加蛇身
-void addsnake()
+void addsnake(Snake *pSnake)
 {
-
      Snake *AdditionSnake;
+
+
      AdditionSnake=(Snake *)malloc(sizeof(Snake));
 
-     current=head;
-     while(current->next != NULL)
+     while(pSnake->next != NULL)
      {
-          current=current->next;
+          pSnake=pSnake->next;
      }
 
-     current->next=AdditionSnake;
+     pSnake->next=AdditionSnake;
      AdditionSnake->next=NULL;
-
-
 }
 
 //释放链表
-void release()
+void release(Snake *pSnake)
 {
+     pSnake=pSnake->next;
      Snake *temp=NULL;
-     current=head;
-     while(current != NULL)
+     while(pSnake != NULL)
      {
-          temp=current->next;
-          free(current);
-          current=temp;
+          temp=pSnake->next;
+          free(pSnake);
+          pSnake=temp;
      }
 
 }

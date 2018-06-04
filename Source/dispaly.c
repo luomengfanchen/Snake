@@ -5,23 +5,23 @@
 
 
 //将地图和蛇体在终端显示
-void show()
+void show(int fx,int fy,Snake *pSnake,char (*pmap)[40])
 {
-     map[food_x][food_y]='$';
+     map[fx][fy]='$';
 
-     map[head->x][head->y]='@';
-     current=head->next;
-     while(current != NULL)
+     map[pSnake->x][pSnake->y]='@';
+     pSnake=pSnake->next;
+     while(pSnake != NULL)
      {
-          map[current->x][current->y]='*';
-          current=current->next;
+          map[pSnake->x][pSnake->y]='*';
+          pSnake=pSnake->next;
      }
 
      for(int i=0;i<20;i++)
      {
           for(int j=0;j<40;j++)
           {
-               printf("%c",map[i][j]);
+               printf("%c",pmap[i][j]);
           }
           printf("\n");
      }
