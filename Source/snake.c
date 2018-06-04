@@ -3,9 +3,12 @@
 #include "..\Header\snake.h"
 #include "..\Header\food.h"
 
-Snake head;
+Snake head;//保存蛇头（链表头）数据
 
-//初始化蛇，生成一个蛇头，和两个蛇身
+/*
+功能：初始化蛇，生成一个蛇头，和两个蛇身
+参数：传入蛇头的地址
+*/
 void initsnake(Snake *pSnake)
 {
      Snake *current=NULL;
@@ -27,7 +30,10 @@ void initsnake(Snake *pSnake)
      current->next=NULL;
 }
 
-//更新蛇坐标
+/*
+功能：更新蛇坐标
+参数：传入蛇头的地址
+*/
 void updatesnake(Snake *pSnake,int key)
 {
      int prev_x=pSnake->x;//保存上一个节点坐标
@@ -71,7 +77,10 @@ void updatesnake(Snake *pSnake,int key)
 
 }
 
-//添加蛇身
+/*
+功能：添加蛇身
+参数：传入蛇头的地址
+*/
 void addsnake(Snake *pSnake)
 {
      Snake *AdditionSnake;
@@ -88,7 +97,10 @@ void addsnake(Snake *pSnake)
      AdditionSnake->next=NULL;
 }
 
-//释放链表
+/*
+功能：释放链表
+参数：传入蛇头的地址
+*/
 void release(Snake *pSnake)
 {
      pSnake=pSnake->next;
@@ -100,4 +112,27 @@ void release(Snake *pSnake)
           pSnake=temp;
      }
 
+}
+
+/*
+功能：检查蛇头是否碰撞
+返回值:碰撞返回0，不碰撞返回1
+参数1：传入蛇头地址
+*/
+int  testcollide(Snake *pSnake)
+{
+     if(pSnake->x == 0 || pSnake->x ==19 || pSnake->y == 0 || pSnake->y ==19)
+     {
+          return 0;
+     }
+     Snake *current=pSnake->next;
+     while(current != NULL)
+     {
+          if(pSnake->x == current->x && pSnake->y == current->y)
+          {
+               return 0;
+          }
+          current=current->next;
+     }
+     return 1;
 }

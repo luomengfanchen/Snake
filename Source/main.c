@@ -25,6 +25,11 @@ int main()
      {
           initmap(map);//生成地图边界
 
+          if(testcollide(&head)==0)//检测碰撞
+          {
+               break;
+          }
+
           if((head.x == food_x) && (head.y == food_y))//如果蛇头坐标与食物坐标重合
           {
                addsnake(&head);//添加一节蛇身
