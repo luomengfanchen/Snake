@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "..\Header\snake.h"
 #include "..\Header\map.h"

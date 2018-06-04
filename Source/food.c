@@ -16,6 +16,7 @@ void createfood(int *fx,int *fy)//生成食物
 }
 
 int testfood(int fx,int fy,Snake *pSnake)//测试食物生成的坐标是否与蛇座标以及地图边界重合
+
 {
      if(fx ==0 || fy ==0)
      {

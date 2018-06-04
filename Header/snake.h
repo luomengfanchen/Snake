@@ -11,7 +11,8 @@ typedef struct snake
 /*
      变量声明
 */
-extern Snake *head;
+
+extern Snake head;
 
 /*
      函数声明
