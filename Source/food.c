@@ -7,25 +7,25 @@
 int food_x=0;
 int food_y=0;
 
-void createfood()
+void createfood(int *fx,int *fy)//生成食物
 {
      srand(time(NULL));
-     food_x=rand()%20;
-     food_y=rand()%40;
+     *fx=rand()%19;
+     *fy=rand()%39;
 
 }
 
-int testfood(int x,int y,Snake *pSnake)
-{
+int testfood(int fx,int fy,Snake *pSnake)//测试食物生成的坐标是否与蛇座标以及地图边界重合
 
-     if(x ==0 || x == 20 || y ==0 || y == 40)
+{
+     if(fx ==0 || fy ==0)
      {
           return 0;
      }
 
      while(pSnake!=NULL)
      {
-          if(x == pSnake->x && y == pSnake->y)
+          if((fx == pSnake->x) && (fy == pSnake->y))
           {
                return 0;
           }
