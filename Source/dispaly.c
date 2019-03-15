@@ -13,22 +13,22 @@
 */
 void show(int fx,int fy,Snake *pSnake,char (*pmap)[20])
 {
-     map[fx][fy]='$';
+    map[fx][fy]='$';
 
-     map[pSnake->x][pSnake->y]='@';
-     pSnake=pSnake->next;
-     while(pSnake != NULL)
-     {
-          map[pSnake->x][pSnake->y]='*';
-          pSnake=pSnake->next;
-     }
+    map[pSnake->x][pSnake->y]='@';
+    pSnake=pSnake->next;
+    while(pSnake != NULL)
+    {
+        map[pSnake->x][pSnake->y]='*';
+        pSnake=pSnake->next;
+    }
 
-     for(int i=0;i<20;i++)
-     {
-          for(int j=0;j<20;j++)
-          {
-               printf("%c ",pmap[i][j]);
-          }
-          printf("\n");
-     }
+    for(int i=0;i<20;i++)
+    {
+        for(int j=0;j<20;j++)
+        {
+            printf("%c ",pmap[i][j]);
+        }
+        printf("\n");
+    }
 }

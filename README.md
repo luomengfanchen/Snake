@@ -1,2 +1,2 @@
-# Snake
-This is a simple snake game
+# 贪吃蛇游戏
+

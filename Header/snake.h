@@ -8,6 +8,7 @@ typedef struct snake
      struct snake *next;
 }Snake;
 
+extern int length;//蛇长
 
 extern Snake head;//保存蛇头（链表头）数据
 

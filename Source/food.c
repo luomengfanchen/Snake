@@ -14,10 +14,9 @@ int food_y=0;
 */
 void createfood(int *fx,int *fy)
 {
-     srand(time(NULL));
-     *fx=rand()%19;
-     *fy=rand()%19;
-
+    srand(time(NULL));
+    *fx=rand()%19;
+    *fy=rand()%19;
 }
 
 /*
@@ -29,19 +28,18 @@ void createfood(int *fx,int *fy)
 */
 int testfood(int fx,int fy,Snake *pSnake)
 {
-     if(fx ==0 || fy ==0)
-     {
-          return 0;
-     }
+    if(fx ==0 || fy ==0)
+    {
+        return 0;
+    }
 
-     while(pSnake!=NULL)
-     {
-          if((fx == pSnake->x) && (fy == pSnake->y))
-          {
-               return 0;
-          }
-          pSnake=pSnake->next;
-     }
-
-     return 1;
+    while(pSnake!=NULL)
+    {
+        if((fx == pSnake->x) && (fy == pSnake->y))
+        {
+            return 0;
+        }
+        pSnake=pSnake->next;
+    }
+    return 1;
 }
