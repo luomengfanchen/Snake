@@ -2,16 +2,16 @@
 #include <conio.h>
 #include <stdlib.h>
 
-#include "..\Header\snake.h"
-#include "..\Header\map.h"
-#include "..\Header\dispaly.h"
-#include "..\Header\delay.h"
-#include "..\Header\food.h"
-#include "..\Header\game.h"
+#include "snake.h"
+#include "map.h"
+#include "dispaly.h"
+#include "delay.h"
+#include "food.h"
+#include "game.h"
 
 
 /*
-功能：游玩游戏
+	TODO 功能：游玩游戏
 */
 void game()
 {
@@ -66,7 +66,7 @@ void game()
 }
 
 /*
-功能:显示游戏结束菜单
+	TODO 功能:显示游戏结束菜单
 */
 void gameover()
 {

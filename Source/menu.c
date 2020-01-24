@@ -2,11 +2,12 @@
 #include <conio.h>
 #include <stdlib.h>
 
-#include "..\Header\menu.h"
-#include "..\Header\delay.h"
+#include "menu.h"
+#include "delay.h"
+
 /*
-功能：显示开始菜单
-返回值：为0表明进行游戏,为1表示退出
+	TODO 功能：显示开始菜单
+	? 返回值：为1表明进行游戏, 为2表示游戏说明, 为3表示退出
 */
 int menu()
 {
@@ -19,19 +20,19 @@ int menu()
 		switch(flag)
 		{
 			case 1:
-				printf("  >>     开 始 游 戏\n\n\n\n");
-				printf("         游 戏 说 明\n\n\n\n");
-				printf("         退 出 游 戏\n\n\n\n\n");
+				printf("  >>       开 始 游 戏\n\n\n\n");
+				printf("           游 戏 说 明\n\n\n\n");
+				printf("           退 出 游 戏\n\n\n\n\n");
 				break;
 			case 2:
-				printf("         开 始 游 戏\n\n\n\n");
-				printf("  >>     游 戏 说 明\n\n\n\n");
-				printf("         退 出 游 戏\n\n\n\n\n");
+				printf("           开 始 游 戏\n\n\n\n");
+				printf("  >>       游 戏 说 明\n\n\n\n");
+				printf("           退 出 游 戏\n\n\n\n\n");
 				break;
 			case 3:
-				printf("         开 始 游 戏\n\n\n\n");
-				printf("         游 戏 说 明\n\n\n\n");
-				printf("  >>     退 出 游 戏\n\n\n\n\n");
+				printf("           开 始 游 戏\n\n\n\n");
+				printf("           游 戏 说 明\n\n\n\n");
+				printf("  >>       退 出 游 戏\n\n\n\n\n");
 				break;
 		}
 		printf("# # # # # # # # # # # # # # # # # # # #\n");
@@ -39,13 +40,20 @@ int menu()
 		key=getch();
 		switch(key)
 		{
-			case 13:
-				if(flag==1)
-					return 0;
-				if(flag==2)
-					help();
-				if(flag==3)
+			case 13://Enter
+				if(flag == 1)
+				{
 					return 1;
+				}
+				if(flag == 2)
+				{
+					return 2;
+				}
+					
+				if(flag == 3)
+				{
+					return 3;
+				}
 				break;
 			case 119://w
 				if(flag==1)
@@ -65,9 +73,9 @@ int menu()
 
 }
 /*
-功能：显示帮助菜单
+	TODO 功能：显示帮助菜单
 */
-void help()
+void helpmenu()
 {
 	system("cls");
 	printf("# # # # # # # # # # # # # # # # # # # #\n\n\n\n");
@@ -78,4 +86,18 @@ void help()
 	printf("        将为你在10秒后自动退出\n");
 	printf("# # # # # # # # # # # # # # # # # # # #\n");
 	Delay(10000);
+}
+
+/*
+	TODO 功能：显示退出菜单
+*/
+void exitmenu()
+{
+	system("cls");
+	printf("# # # # # # # # # # # # # # # # # # # #");
+	printf("\n\n\n\n\n\n\n\n");
+	printf("           正在为你退出游戏\n");
+	printf("\n\n\n\n\n\n\n\n");
+	printf("# # # # # # # # # # # # # # # # # # # #\n");
+	Delay(1000);
 }

@@ -2,8 +2,8 @@
 #include<time.h>
 
 /*
-功能：时间的延迟
-参数：时间单位为毫秒
+    TODO 功能：时间的延迟
+    ? 参数：时间单位为毫秒
 */
 void Delay(int time)
 {
