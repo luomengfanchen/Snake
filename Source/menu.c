@@ -1,3 +1,14 @@
+/**
+ * @file menu.c
+ * @author Miracle
+ * @brief 菜单相关函数定义
+ * @version 2.0
+ * @date 2020-02-18
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
@@ -5,75 +16,77 @@
 #include "menu.h"
 #include "delay.h"
 
-/*
-	TODO 功能：显示开始菜单
-	? 返回值：为1表明进行游戏, 为2表示游戏说明, 为3表示退出
+/**
+ * @brief 显示开始菜单
+ * @return None
+ * @param：为0表明进行游戏,为1表示退出
 */
 int menu()
 {
-	int flag=1;
-	int key=0;
-	while(1)
+	int flag = 1;
+	int key = 0;
+	while (1)
 	{
 		system("cls");
 		printf("# # # # # # # # # # # # # # # # # # # #\n\n\n\n\n\n");
-		switch(flag)
+		switch (flag)
 		{
-			case 1:
-				printf("  >>       开 始 游 戏\n\n\n\n");
-				printf("           游 戏 说 明\n\n\n\n");
-				printf("           退 出 游 戏\n\n\n\n\n");
-				break;
-			case 2:
-				printf("           开 始 游 戏\n\n\n\n");
-				printf("  >>       游 戏 说 明\n\n\n\n");
-				printf("           退 出 游 戏\n\n\n\n\n");
-				break;
-			case 3:
-				printf("           开 始 游 戏\n\n\n\n");
-				printf("           游 戏 说 明\n\n\n\n");
-				printf("  >>       退 出 游 戏\n\n\n\n\n");
-				break;
+		case 1:
+			printf("  >>       开 始 游 戏\n\n\n\n");
+			printf("           游 戏 说 明\n\n\n\n");
+			printf("           退 出 游 戏\n\n\n\n\n");
+			break;
+		case 2:
+			printf("           开 始 游 戏\n\n\n\n");
+			printf("  >>       游 戏 说 明\n\n\n\n");
+			printf("           退 出 游 戏\n\n\n\n\n");
+			break;
+		case 3:
+			printf("           开 始 游 戏\n\n\n\n");
+			printf("           游 戏 说 明\n\n\n\n");
+			printf("  >>       退 出 游 戏\n\n\n\n\n");
+			break;
 		}
 		printf("# # # # # # # # # # # # # # # # # # # #\n");
 
-		key=getch();
-		switch(key)
+		key = getch();
+		switch (key)
 		{
-			case 13://Enter
-				if(flag == 1)
-				{
-					return 1;
-				}
-				if(flag == 2)
-				{
-					return 2;
-				}
-					
-				if(flag == 3)
-				{
-					return 3;
-				}
-				break;
-			case 119://w
-				if(flag==1)
-					flag=3;
-				else
-					flag--;
-				break;
-			case 115://s
-				if(flag==3)
-					flag=1;
-				else
-					flag++;
-				break;
+		case 13: //Enter
+			if (flag == 1)
+			{
+				return 1;
+			}
+			if (flag == 2)
+			{
+				return 2;
+			}
+
+			if (flag == 3)
+			{
+				return 3;
+			}
+			break;
+		case 119: //w
+			if (flag == 1)
+				flag = 3;
+			else
+				flag--;
+			break;
+		case 115: //s
+			if (flag == 3)
+				flag = 1;
+			else
+				flag++;
+			break;
 		}
 	}
-
-
 }
-/*
-	TODO 功能：显示帮助菜单
+
+/**
+ * @brief 显示帮助菜单
+ * @return None
+ * @param：None
 */
 void helpmenu()
 {
@@ -88,8 +101,10 @@ void helpmenu()
 	Delay(10000);
 }
 
-/*
-	TODO 功能：显示退出菜单
+/**
+ * @brief 显示退出菜单
+ * @return None
+ * @param：None
 */
 void exitmenu()
 {

@@ -1,12 +1,24 @@
-//实现时间延迟
-#include<time.h>
+/**
+ * @file delay.c
+ * @author Miracle
+ * @brief 延时函数定义
+ * @version 2.0
+ * @date 2020-02-18
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 
-/*
-    TODO 功能：时间的延迟
-    ? 参数：时间单位为毫秒
-*/
+#include <time.h>
+
+/**
+ * @brief 实现时间的延迟
+ * @return None
+ * @param 时间单位为毫秒
+ */
 void Delay(int time)
 {
-    clock_t now=clock();
-    while(clock()-now<time);
+    clock_t now = clock();
+    while (clock() - now < time)
+        ;
 }

@@ -1,49 +1,67 @@
-﻿#ifndef SNAKE_H
+﻿/**
+ * @file snake.h
+ * @author Miralce
+ * @brief 蛇体操作相关函数声明
+ * @version 2.0
+ * @date 2020-02-18
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
+#ifndef SNAKE_H
 #define SNAKE_H
 
+/**
+ * @brief 保存蛇体数据的结构体
+ * @warning 需要使用链表结构
+*/
 typedef struct snake
 {
      int x;
      int y;
      struct snake *next;
-}Snake;
+} Snake;
 
-extern int length;// 蛇长
+extern int length; // 蛇长
 
-extern Snake head;// 保存蛇头（链表头）数据
+extern Snake head; // 保存蛇头（链表头）数据
 
-/*
-     TODO 功能：初始化蛇，生成一个蛇头，和两个蛇身
-     ? 参数：传入蛇头的地址
+/**
+ * @brief 初始化蛇，生成一个蛇头，和两个蛇身
+ * @return: None
+ * @param：传入蛇头的地址
 */
 void initsnake(Snake *pSnake);
 
-/*
-     TODO 功能：添加蛇身
-     ? 参数：传入蛇头的地址
+/**
+ * @brief 更新蛇坐标
+ * @return None
+ * @param 传入蛇头的地址
+ * @param 按下的键位
+*/
+void updatesnake(Snake *pSnake, int key);
+
+/**
+ * @brief 添加蛇身
+ * @return None
+ * @param 传入蛇头的地址
 */
 void addsnake(Snake *pSnake);
 
-/*
-     TODO 功能：更新蛇坐标
-     ? 参数1：传入蛇头的地址
-     ? 参数2：按下的键位
-*/
-void updatesnake(Snake *pSnake,int key);
-
-/*
-     TODO 功能：释放链表
-     ? 参数：传入蛇头的地址
+/**
+ * @brief 释放链表
+ * @return None
+ * @param 传入蛇头的地址
 */
 void release(Snake *pSnake);
 
-/*
-     TODO 功能：检查蛇头是否碰撞
-     ! 返回值:碰撞返回0，不碰撞返回1
-     ?参数1：传入蛇头地址
-     ?参数2：传入二维数组地址
+/**
+ * @brief 检查蛇头是否碰撞
+ * @return 碰撞返回0，不碰撞返回1
+ * @param 传入蛇头地址
+ * @param 传入二维数组地址
 */
 int testcollide(Snake *pSnake);
-
 
 #endif
