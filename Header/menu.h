@@ -3,7 +3,7 @@
  * @author Miracle
  * @brief 菜单相关函数声明
  * @version 2.0
- * @date 2020-02-18
+ * @date 2020-02-20
  * 
  * @copyright Copyright (c) 2020
  * 
@@ -14,8 +14,10 @@
 
 /**
  * @brief 显示开始菜单
- * @return None
- * @param 为0表明进行游戏,为1表示退出
+ * @return 返回是否进行游戏
+ * @retval 0 表市进行游戏
+ * @retval 1 表式进行游戏
+ * @param None
 */
 int menu();
 
@@ -29,7 +31,7 @@ void helpmenu();
 /**
  * @brief 显示退出菜单
  * @return None
- * @param：None
+ * @param None
 */
 void exitmenu();
 

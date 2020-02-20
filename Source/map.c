@@ -3,7 +3,7 @@
  * @author Miracle
  * @brief 地图相关函数定义
  * @version 2.0
- * @date 2020-02-18
+ * @date 2020-02-20
  * 
  * @copyright Copyright (c) 2020
  * 
@@ -14,7 +14,7 @@ char map[20][20] = {' '};
 /**
  * @brief 初始化地图，将四周边界赋值
  * @return None
- * @param 传入二伟数组地址
+ * @param [in] pmap 传入二伟数组地址
 */
 void initmap(char (*pmap)[20])
 {
@@ -37,7 +37,7 @@ void initmap(char (*pmap)[20])
 /**
  * @brief 清空地图数据
  * @return None
- * @param 传入二伟数组地址
+ * @param [out] map 传入二伟数组地址
 */
 void clearmap(char (*pmap)[20])
 {
